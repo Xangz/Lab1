@@ -1,0 +1,16 @@
+﻿@model IEnumerable<NdsLab1.Models.MenuItem>
+
+<div class="nav flex-column">
+    <div class="text-muted text-uppercase fw-bold mb-2 small">Core</div>
+    <a class="nav-link text-white py-1" href="#">Dashboard</a>
+
+    <div class="text-muted text-uppercase fw-bold my-2 small">Addons (ViewComponent)</div>
+
+    <!-- Đổ danh sách động từ Model truyền từ ViewComponent -->
+    @foreach (var item in Model)
+    {
+        <a class="nav-link text-white py-1" href="/@item.Link">
+            <i class="fas fa-chart-area me-1"></i> @item.Name
+        </a>
+    }
+</div>

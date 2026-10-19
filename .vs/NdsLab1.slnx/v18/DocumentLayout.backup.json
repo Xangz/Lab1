@@ -1,0 +1,71 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "D:\\Study\\thirdyear\\I\\Laptrinhweb\\Thuchanh\\NdsLab1\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{6EF8FA6D-A891-E861-AAAB-9E24C0EF0FDE}|NdsLab1\\NdsLab1.csproj|d:\\study\\thirdyear\\i\\laptrinhweb\\thuchanh\\ndslab1\\ndslab1\\views\\student\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{6EF8FA6D-A891-E861-AAAB-9E24C0EF0FDE}|NdsLab1\\NdsLab1.csproj|solutionrelative:ndslab1\\views\\student\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{6EF8FA6D-A891-E861-AAAB-9E24C0EF0FDE}|NdsLab1\\NdsLab1.csproj|d:\\study\\thirdyear\\i\\laptrinhweb\\thuchanh\\ndslab1\\ndslab1\\views\\shared\\mylayouthelper.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{6EF8FA6D-A891-E861-AAAB-9E24C0EF0FDE}|NdsLab1\\NdsLab1.csproj|solutionrelative:ndslab1\\views\\shared\\mylayouthelper.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{6EF8FA6D-A891-E861-AAAB-9E24C0EF0FDE}|NdsLab1\\NdsLab1.csproj|d:\\study\\thirdyear\\i\\laptrinhweb\\thuchanh\\ndslab1\\ndslab1\\views\\shared\\mylayout.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{6EF8FA6D-A891-E861-AAAB-9E24C0EF0FDE}|NdsLab1\\NdsLab1.csproj|solutionrelative:ndslab1\\views\\shared\\mylayout.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 0,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "Index.cshtml",
+              "DocumentMoniker": "D:\\Study\\thirdyear\\I\\Laptrinhweb\\Thuchanh\\NdsLab1\\NdsLab1\\Views\\Student\\Index.cshtml",
+              "RelativeDocumentMoniker": "NdsLab1\\Views\\Student\\Index.cshtml",
+              "ToolTip": "D:\\Study\\thirdyear\\I\\Laptrinhweb\\Thuchanh\\NdsLab1\\NdsLab1\\Views\\Student\\Index.cshtml",
+              "RelativeToolTip": "NdsLab1\\Views\\Student\\Index.cshtml",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA4AAAAXAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2026-10-19T05:52:59.017Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "MyLayout.cshtml",
+              "DocumentMoniker": "D:\\Study\\thirdyear\\I\\Laptrinhweb\\Thuchanh\\NdsLab1\\NdsLab1\\Views\\Shared\\MyLayout.cshtml",
+              "RelativeDocumentMoniker": "NdsLab1\\Views\\Shared\\MyLayout.cshtml",
+              "ToolTip": "D:\\Study\\thirdyear\\I\\Laptrinhweb\\Thuchanh\\NdsLab1\\NdsLab1\\Views\\Shared\\MyLayout.cshtml",
+              "RelativeToolTip": "NdsLab1\\Views\\Shared\\MyLayout.cshtml",
+              "ViewState": "AgIAABQAAAAAAAAAAAAiwCsAAAAHAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2026-10-19T05:51:10.138Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "MyLayoutHelper.cshtml",
+              "DocumentMoniker": "D:\\Study\\thirdyear\\I\\Laptrinhweb\\Thuchanh\\NdsLab1\\NdsLab1\\Views\\Shared\\MyLayoutHelper.cshtml",
+              "RelativeDocumentMoniker": "NdsLab1\\Views\\Shared\\MyLayoutHelper.cshtml",
+              "ToolTip": "D:\\Study\\thirdyear\\I\\Laptrinhweb\\Thuchanh\\NdsLab1\\NdsLab1\\Views\\Shared\\MyLayoutHelper.cshtml",
+              "RelativeToolTip": "NdsLab1\\Views\\Shared\\MyLayoutHelper.cshtml",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABUAAAAtAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2026-10-19T05:50:41.121Z",
+              "EditorCaption": ""
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
