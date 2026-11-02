@@ -14,7 +14,7 @@ namespace NdsLab1.Controllers
         {
             db = context;
         }
-
+        private int pageSize = 3;
         public IActionResult Index(int? mid)
         {
             if (mid == null)
@@ -29,6 +29,46 @@ namespace NdsLab1.Controllers
                                  .Include(m => m.Major).ToList();
                 return View(learners);
             }
+        }
+        public IActionResult LearnerFilter(int? mid, string? keyword, int? pageIndex)
+        {
+            // Lấy toàn bộ learners trong dbset chuyển về IQueryable<Learner> để query[cite: 36]
+            var learners = (IQueryable<Learner>)db.Learners;
+
+            // Lấy chỉ số trang, nếu chỉ số trang null thì gán ngầm định bằng 1[cite: 36]
+            int page = (int)(pageIndex == null || pageIndex <= 0 ? 1 : pageIndex);
+
+            // Nếu có mid thì lọc learner theo mid (chuyên ngành)[cite: 36]
+            if (mid != null)
+            {
+                learners = learners.Where(l => l.MajorID == mid);
+                ViewBag.mid = mid; // Gửi mid về view để ghi lại trên nav-phân trang[cite: 36]
+            }
+
+            // Nếu có keyword thì tìm kiếm theo tên[cite: 36]
+            if (keyword != null)
+            {
+                learners = learners.Where(l => l.FirstMidName.ToLower().Contains(keyword.ToLower()));
+                ViewBag.keyword = keyword; // Gửi keyword về view để ghi lại trên nav-phân trang[cite: 36]
+            }
+
+            // Tính số trang[cite: 36]
+            int pageNum = (int)Math.Ceiling(learners.Count() / (float)pageSize);
+            ViewBag.pageNum = pageNum; // Gửi số trang về view để hiển thị nav-trang[cite: 36]
+
+            // Chọn dữ liệu trong trang hiện tại[cite: 36]
+            var result = learners.Skip(pageSize * (page - 1))
+                                 .Take(pageSize)
+                                 .Include(m => m.Major);
+
+            return PartialView("LearnerTable", result);
+        }
+        public IActionResult LearnerByMajorID(int mid)
+        {
+            var learners = db.Learners
+                             .Where(l => l.MajorID == mid)
+                             .Include(m => m.Major).ToList();
+            return PartialView("LearnerTable", learners);
         }
         public IActionResult Create()
         {
@@ -73,13 +113,6 @@ namespace NdsLab1.Controllers
             }
 
             return View(learner);
-        }
-        public IActionResult LearnerByMajorID(int mid)
-        {
-            var learners = db.Learners
-                             .Where(l => l.MajorID == mid)
-                             .Include(m => m.Major).ToList();
-            return PartialView("LearnerTable", learners);
         }
         [HttpPost]
         [ValidateAntiForgeryToken]

@@ -1,4 +1,6 @@
-﻿<table class="table table-striped">
+﻿@model IEnumerable<NdsLab1.Models.Learner>
+
+<table class="table table-striped">
     <thead>
         <tr>
             <th>Mã</th>
@@ -26,3 +28,18 @@
         }
     </tbody>
 </table>
+
+<!-- Thanh phân trang (Pagination) -->
+@if (ViewBag.pageNum > 1)
+{
+    <nav aria-label="Page navigation">
+        <ul class="pagination">
+            @for (int i = 1; i <= ViewBag.pageNum; i++)
+            {
+                <li class="page-item">
+                    <a class="page-link" href="#" data-page="@i">@i</a>
+                </li>
+            }
+        </ul>
+    </nav>
+}

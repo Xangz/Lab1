@@ -6,50 +6,67 @@
 
 <div class="ms-2 mx-2">
     <h1>Learner List</h1>
+
+    <!-- 1. Hiển thị danh sách chuyên ngành (ViewComponent) -->
     @await Component.InvokeAsync("Major")
-    <div id="content">
-        <table class="table table-striped">
-            <thead>
-                <tr>
-                    <th>Mã</th>
-                    <th>Tên</th>
-                    <th>Họ</th>
-                    <th>Ngành</th>
-                    <th>Ngày Nhập Học</th>
-                    <th>Chức năng</th>
-                </tr>
-            </thead>
-            <tbody>
-                @foreach (var s in Model)
-                {
-                    <tr>
-                        <td>@s.LearnerID</td>
-                        <td>@s.FirstMidName</td>
-                        <td>@s.LastName</td>
-                        <td>@s.Major?.MajorName</td>
-                        <td>@s.EnrollmentDate.ToString("dd/MM/yyyy")</td>
-                        <td>
-                            <a asp-action="Edit" asp-route-id="@s.LearnerID">Edit</a> |
-                            <a asp-action="Delete" asp-route-id="@s.LearnerID">Delete</a>
-                        </td>
-                    </tr>
-                }
-            </tbody>
-        </table>
+
+    <!-- 2. Ô tìm kiếm theo tên -->
+    <div class="input-group mb-3 mt-3" style="max-width: 400px;">
+        <input type="text" id="searchKeyword" class="form-control" placeholder="Search by name..." value="@ViewBag.keyword" />
+        <button class="btn btn-outline-secondary" type="button" id="btnSearch">Search</button>
     </div>
-    <a asp-action="Create" class="btn btn-primary">Create New Student</a>
+
+    <!-- 3. Khu vực hiển thị bảng dữ liệu (được bao bọc bởi id="content" để AJAX cập nhật) -->
+    <div id="content">
+        <partial name="LearnerTable" model="Model" />
+    </div>
+
+    <a asp-action="Create" class="btn btn-primary mt-3">Create New Student</a>
 </div>
+
 @section Scripts {
     <script>
-        $("li").click(function (e) {
-            var id = $(this).attr("id");
+        // Biến lưu trạng thái lọc hiện tại
+        var currentMid = '@ViewBag.mid';
+        var currentKeyword = '@ViewBag.keyword';
+
+        // Xử lý sự kiện click chọn chuyên ngành (Major)
+        $(document).on("click", ".nav-link", function (e) {
+            e.preventDefault();
+            currentMid = $(this).closest("li").attr("id"); // Lấy MajorID từ thẻ li
+            loadLearnerData(currentMid, currentKeyword, 1);
+        });
+
+        // Xử lý sự kiện bấm nút Tìm kiếm
+        $("#btnSearch").click(function () {
+            currentKeyword = $("#searchKeyword").val();
+            loadLearnerData(currentMid, currentKeyword, 1);
+        });
+
+        // Xử lý sự kiện chuyển trang (Pagination)
+        $(document).on("click", ".page-link", function (e) {
+            e.preventDefault();
+            var page = $(this).attr("data-page");
+            loadLearnerData(currentMid, currentKeyword, page);
+        });
+
+        // Hàm chung gọi AJAX tới LearnerFilter
+        function loadLearnerData(mid, keyword, pageIndex) {
             $.ajax({
-                url: "LearnerByMajorID",
-                data: { mid: id },
+                url: '/Learner/LearnerFilter',
+                type: 'GET',
+                data: {
+                    mid: mid,
+                    keyword: keyword,
+                    pageIndex: pageIndex
+                },
                 success: function (response) {
-                    $("#content").html(response);
+                    $("#content").html(response); // Đổ dữ liệu trả về vào thẻ div#content
+                },
+                error: function (xhr) {
+                    console.log("Error: " + xhr.responseText);
                 }
             });
-        });
+        }
     </script>
 }
